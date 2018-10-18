@@ -1,6 +1,5 @@
 n = input()
-n = n.replace('0.', '')
-print(n)
+n = n[2:]
 k = 0
 p = 1/2
 for each in n:
