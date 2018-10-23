@@ -24,3 +24,4 @@ else:
     for each in L:
         ans += each
     print(ans)
+
