@@ -1,4 +1,20 @@
-def fun(p, q):  # 加法
+def fun1(L):  # 转码
+    for i in range(len(L)):
+        if L[i] == '1':
+            L[i] = '0'
+        else:
+            L[i] = '1'
+    k = 1
+    for i in range(len(L)-1, -1, -1):
+        if k and L[i] == '0':
+            L[i] = '1'
+            k = 0
+        elif k and L[i] == '1':
+            L[i] = '0'
+    return L
+
+
+def fun2(p, q):  # 加法
     if not len(p):
         return q
     else:
@@ -28,31 +44,41 @@ def fun(p, q):  # 加法
                     p.append('0')
         if a:
             p.append('1')
+        else:
+            p.append('0')
         p.reverse()
         return p
 
 
 x = bin(int(input()))[2:]
 y = bin(int(input()))[2:]
-L1 = [i for i in x]
-L2 = [i for i in y]
-a = len(L1)
-b = len(L2)
-if a > b:
-    a = L1
-    b = L2
-else:
-    a = L2
-    b = L1  # a是大的，b是小的
-L = []
-k = 1
-for i in range(len(b)):
-    if b[len(b)-i-1] == '1':
-        lll = a + ['0']*i
-        L = fun(L, lll)
+L1 = []
+L2 = []
+for each in x:
+    L1.append(each)
+for each in y:
+    L2.append(each)
+i = 0
+while 1:
+    f = fun2(fun1(['0']*(len(L1)-len(L2)+1)+L2), ['0']+L1)
+    g = 1
+    for j in range(1, len(f)):
+        if j == 1:
+            g = 0
+            break
+    if len(L1) < len(L2) or f[1] == '1' or g:
+        break
+    a = len(L1)
+    L1 = f
+    if len(L1) > a:
+        del(L1[0])
+    while not int(L1[0]) and len(L1)-1:
+        del(L1[0])
+    i += 1
+print('商：', end='')
+print(i)
 ans = ''
-for each in L:
+for each in L1:
     ans = ans + each
+print('余数：', end='')
 print(int(ans, 2))
-
-
