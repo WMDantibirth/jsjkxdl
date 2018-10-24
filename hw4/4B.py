@@ -50,8 +50,8 @@ def fun2(p, q):  # 加法
         return p
 
 
-x = bin(int(input()))[2:]
-y = bin(int(input()))[2:]
+x = bin(int(input('被除数：')))[2:]
+y = bin(int(input('除数：')))[2:]
 L1 = []
 L2 = []
 for each in x:
