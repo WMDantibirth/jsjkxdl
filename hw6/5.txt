@@ -1,0 +1,27 @@
+#L=[3,49,48,49];a=L[0];p=0
+#for i in range(1,a+1):
+#    if L[i]>48:
+#        p+=1
+#print(p)
+
+move R1,0
+move R7,1
+_data 0,[3, 49, 48, 49]
+
+move R0,0
+load R2,(0)
+
+L1:
+sle R6,R7,R2
+beqz R6,L3
+load R3,0(R7)
+sle R5,R3,48
+add R7,R7,1
+beqz R5,L2
+goto L1
+
+L2:
+add R1,R1,1
+goto L1
+L3:
+_pr R1

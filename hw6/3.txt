@@ -1,0 +1,36 @@
+#L = [5,6,7]
+#if L[0]<=L[1]:
+#    if L[1]<=L[2]:
+#        print(L[2])
+#    else:print(L[1])
+#else:
+#    if L[0]<=L[]2:
+#        print(L[2])
+#    else:print(L[0])
+
+_data 0,[5,6,7]
+
+move R0,0
+load R5,0(R0)
+load R6,1(R0)
+load R7,2(R0)
+
+sle R4,R5,R6
+beqz R4,L1
+sle R2,R6,R7
+beqz R2,L2
+move R1,R7
+goto L4
+L1:
+sle R3,R5,R7
+beqz R3,L3
+move R1,R7
+goto L4
+L2:
+move R1,R6
+goto L4
+L3:
+move R1,R5
+goto L4
+L4:
+_pr R1

@@ -1,0 +1,4 @@
+The game has started!
+/shoot <speed> <angle> to shoot a bullet with a speed of <speed> to the direction <angle>
+/move <x> <y> to move the spacecraft
+/leave to surrender and end the game

@@ -57,33 +57,33 @@ if b:
     s = fun(s)  # s为y
 
 ans = ''  # 开始加法
-a = 0
+c = 0
 for i in range(7, -1, -1):
     if int(k[i]) and int(s[i]):
-        if a:
+        if c:
             ans = '1' + ans
         else:
             ans = '0' + ans
-            a = 1
+            c = 1
     elif not int(k[i]) and not int(s[i]):
-        if a:
+        if c:
             ans = '1' + ans
-            a = 0
+            c = 0
         else:
             ans = '0' + ans
     else:
-        if a:
+        if c:
             ans = '0' + ans
-            a = 1
+            c = 1
         else:
             ans = '1' + ans
 if a and b:
-    if not ans[0]:
+    if not int(ans[0]):
         print('overflow')
     else:
         print(fun2(ans))
 elif not a and not b:
-    if ans[0]:
+    if int(ans[0]):
         print('overflow')
     else:
         print(fun2(ans))

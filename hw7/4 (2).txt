@@ -1,0 +1,51 @@
+move R15,10000
+move sp,R15
+move R2,18
+push R2
+
+call Lf
+goto Lend
+
+Lf:
+push R15
+move R15,sp
+sub sp,sp,2
+
+move R4,2
+div R3,R2,2
+store -1(R15),R3
+
+Lfor:
+slt R6,R4,R3
+beqz R6,Lelse
+div R8,R2,R4
+mul R7,R8,R4
+sub R7,R7,R2
+
+beqz R7,Ldigui
+add R4,R4,1
+goto Lfor
+
+Ldigui:
+_pr 'factor',R4
+store -2(R15),R4
+move R2,R8
+push R2
+call Lf
+goto Lprint
+
+Lelse:
+_pr 'prime factor:',R2
+goto Lprint
+
+Lprint:
+load R2,2(R15)
+load R3,-1(R15)
+_pr 'x:',R2,' y:',R3
+
+Lreturn:
+move sp,R15
+pop R15
+ret
+
+Lend:

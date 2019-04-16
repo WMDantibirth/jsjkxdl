@@ -1,0 +1,7 @@
+This is a game in which you can drive your aircrafts and shoot others.
+Currently this game only supports two-players mode.
+The game takes place in space. In the space are planets with gravity, which will affect the route of your bullet.
+Your bullet is special. It doesn't damage to aircrafts with itself, but with the electronic waves it releases, therefore it does damage to aircrafts when its distance with an aircraft is less than a constant value.
+your spaceship can shoot this kind of bullet with a speed v and an angle a. After you shoot it, only gravity works at it. Because it deals damage with electronic waves, it won't be effective after some time. And of course, when it falls at a planet, it doesn't move anymore.
+The game works in terms, the first one who deals damage to the other's spaceship is the winner.
+Now, enjoy the game!

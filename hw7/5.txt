@@ -1,0 +1,41 @@
+#s = '101'
+#l = 3
+#p = 2**(l-1)
+#q = 0
+#for each in s:
+#    if int(each):
+#        q +=p
+#    p //= 2
+#print(q)
+
+_data 0, [3, 49, 48, 49]
+load R0,0(0)
+move R2,1
+move R3,0   #´ð°¸
+move R15,0
+move R13,0
+
+shiftl R2,R2,R0
+
+Lfor:
+slt R4,R15,R0
+sub R0,R0,1
+beqz R4,L0
+goto L1
+
+L1:
+load R1,1(R13)
+add R13,R13,1
+sle R4,R1,48
+shiftr R2,R2,1
+beqz R4,Lplus
+goto Lfor
+
+Lplus:
+
+add R3,R3,R2
+goto Lfor
+
+L0:
+_pr R3
+

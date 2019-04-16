@@ -1,0 +1,23 @@
+#a=13
+#b=0
+#while 0<a:
+#    if a%2:
+#        b+=1
+#    a //= 2
+#print(b)
+
+move R0,13
+move R3,0
+move R1,0
+L1:
+slt R4,R3,R0
+beqz R4,L3
+and R2,R0,1
+shiftr R0,R0,1
+beqz R2,L2
+add R1,R1,1
+goto L1
+L2:
+goto L1
+L3:
+_pr R1

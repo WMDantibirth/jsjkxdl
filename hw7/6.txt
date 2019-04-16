@@ -1,0 +1,44 @@
+#L = [9, 12, 1, 100, 31, 5, 6, 29, 90, 10, 51, 21, 41, 23, 56, 64, 90, 98, 73, 73]
+#p = 20
+#for j in range(p-1,-1,-1):
+#    for i in range(j):
+#        if L[i+1]<L[i]:
+#            L[i+1],L[i] = L[i],L[i+1]
+#print(L)
+
+
+ _data 10, [20, 9, 12, 1, 100, 31, 5, 6, 29, 90, 10, 51, 21, 41, 23, 56, 64, 90, 98, 73, 73]
+load R0,0(10)    # R0 = p
+move R2,1
+move R5,29    # R5 = j
+move R6,10
+move R15,0
+move R14,R0
+
+Lfor1:
+move R3,9    # R3 = i
+sle R4,R5,R6    #if j<=10
+sub R5,R5,1
+beqz R4,Lfor2
+goto Lprint
+
+Lfor2:
+slt R4,R3,R5    # if i<j
+add R3,R3,1
+beqz R4,Lfor1
+goto Lif
+
+Lif:
+load R7,2(R3)
+load R8,1(R3)
+slt R4,R7,R8    #if L[i+1]<L[i]
+beqz R4,Lfor2
+goto Lchange
+
+Lchange:    # L[i+1],L[i] = L[i],L[i+1]
+store 1(R3),R7
+store 2(R3),R8
+goto Lfor2
+
+Lprint:
+_pr 1(10),2(10),3(10),4(10),5(10),6(10),7(10),8(10),9(10),10(10),11(10),12(10),13(10),14(10),15(10),16(10),17(10),18(10),19(10),20(10)

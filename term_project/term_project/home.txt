@@ -1,0 +1,5 @@
+welcome to the home page of spacewar, alpha 1.0!
+/maps to organize maps.
+/start to start a new game.
+/info to learn the background information about the game.
+/quit to leave.

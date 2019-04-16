@@ -1,0 +1,5 @@
+Starting a new game...
+/view to view available maps
+/choose <mapname> to choose a map
+/rule to learn about the rules
+/home to return to the homepage

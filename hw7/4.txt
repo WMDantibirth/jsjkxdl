@@ -1,0 +1,65 @@
+#def factors(x):  		#找到x的因数
+#    y=x//2
+#    for i in range(2,y+1):		
+#        if (x %i ==0):                  #发现i是x的因数
+#            print(i);
+#            factors(x//i)		#递归调用自己，参数变小是x//i
+#            break  		#跳出for循环
+#    else:  #假如离开循环正常，没有碰到break，就执行else内的print，x是质数
+#        print(x)
+#    print(x,y)
+#    return
+#factors(18)
+
+move R15,10000   #R15表示fp，fp = 10000
+move sp,R15      #sp = fp
+move R2,18        #x = 18
+push R2  #传参数a
+
+call Lf      #调用函数f(a)
+goto Lend
+
+Lf:  #f(a)
+_pr R2
+push R15          #将旧的fp值压入栈内
+move R15,sp       #新的fp = sp
+sub sp,sp,2       #留1个空间，存放局部变量y
+move R4,2
+shiftr R3,R2,1    #y=x//2
+store -1(R15),R3
+
+L0:
+sle R5,R4,R3    #i<=y
+beqz R5,L1    #跳出循环
+div R6,R2,R4
+mul R7,R6,R4
+sle R5,R6,R7
+sle R6,R6,R7
+and R5,R5,R6
+xor R5,R5,1
+beqz R5,L2    # x %i ==0
+add R4,R4,1
+goto L0
+
+L1:
+_pr "Prime Factor:",R2
+goto L3
+
+L2:
+_pr "Factor:",R4
+store -2(R15),R4
+div R2,R2,R4
+push R2
+call Lf
+goto L3
+
+L3:
+_pr "parameter:",R2,"variable:",R3
+
+
+Lreturn:
+pop R2           #返回初始的R2
+move sp,R15      #sp = fp
+ret
+
+Lend:
